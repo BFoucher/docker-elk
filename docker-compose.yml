@@ -17,6 +17,7 @@ services:
       - ./logstash/config:/etc/logstash/conf.d
     ports:
       - "5000:5000"
+      - "12201:12201/udp"
     networks:
       - docker_elk
     depends_on:
@@ -25,6 +26,7 @@ services:
     build: kibana/
     volumes:
       - ./kibana/config/:/etc/kibana/
+      - ./kibana/installedPlugins/:/opt/kibana/installedPlugins/
     ports:
       - "5601:5601"
     networks:
